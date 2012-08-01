@@ -1,0 +1,51 @@
+pb.vim for Vim version 7.0+   Last change: 1 August, 2012
+
+Maintainer: dmitry "troydm" geurkov <d.geurkov@gmail.com>
+Version: 0.1
+Description: pb.vim plugin simplifies interaction with mac os x pastebuffer
+using pbcopy and pbpaste utilities by providing convienient commands for
+yanking into mac os x pastebuffer and pasting from it
+Last Change: 1 August, 2012
+License: Vim License (see :help license)
+Website: https://github.com/troydm/pb.vim
+
+Help on using pb.vim                                                    *pb.vim*
+
+1. Introduction                    |pb.vim-intro|
+2. Configuration                   |pb.vim-configuration|
+2. Usage                           |pb.vim-usage|
+
+==============================================================================
+ 1. INTRODUCTION                                                  *pb.vim-intro*
+
+This is a simple vim plugin for interacting with Mac OS X pastebuffer
+using pbcopy and pbpaste utilities. It provides two commands for yanking text
+into pastebuffer and pasting text from Mac OS X pastebuffer
+Pbyank and Pbpaste that operate on {range} and can take {register} as first argument 
+
+==============================================================================
+ 2. CONFIGURATION                                         *pb.vim-configuration*
+
+                                                         *g:pb_command_prefix*
+g:pb_command_prefix     (Default: '')
+    You can define optional global option for prepanding to pbpaste and pbcopy command
+    For example if you want to use Mac OS X pastebuffer on remote host
+    let g:pb_command_prefix = 'ssh remotehost '
+
+==============================================================================
+ 2. USAGE                                                         *pb.vim-usage*
+
+                                                          *Pbyank*
+:[range]Pbyank [x]
+    To yank text into Mac OS X pastebuffer from {range}
+    If {range} is empty current line is used
+    If register name is provided yanks text from register instead of range
+
+                                                          *Pbpaste*
+:[range]Pbyank [x]
+    To paste text from Mac OS X pastebuffer replacing {range}
+    Replaced {range} is copied into current register
+    If no {range} is specified it pastes text at current cursor position 
+    If register name is provided pastes text into register instead of current buffer
+
+ vim:tw=78:ts=8:ft=help:norl:
