@@ -1,7 +1,7 @@
 " pb.vim plugin for interacting with Mac OS X pastebuffer
-" Maintainer: dmitry "troydm" geurkov <d.geurkov@gmail.com>
+" Maintainer: Dmitry "troydm" Geurkov <d.geurkov@gmail.com>
 " Version: 0.1
-" Description: pb.vim plugin simplifies interaction with mac os x pastebuffer
+" Description: pb.vim plugin simplifies interaction with Mac OS X pastebuffer
 " using pbcopy and pbpaste utilities by providing convienient commands for
 " yanking into mac os x pastebuffer and pasting from it
 " Last Change: 1 August, 2012
