@@ -42,7 +42,7 @@ g:pb_command_prefix     (Default: '')
     If register name is provided yanks text from register instead of range
 
                                                           *Pbpaste*
-:[range]Pbyank [x]
+:[range]Pbpaste [x]
     To paste text from Mac OS X pastebuffer replacing {range}
     Replaced {range} is copied into current register
     If no {range} is specified it pastes text at current cursor position 
