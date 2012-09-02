@@ -1,11 +1,11 @@
-pb.vim for Vim version 7.0+   Last change: 1 August, 2012
+pb.vim for Vim version 7.0+   Last change: 2 September, 2012
 
 Maintainer: Dmitry "troydm" Geurkov <d.geurkov@gmail.com>
-Version: 0.1
+Version: 0.2
 Description: pb.vim plugin simplifies interaction with Mac OS X pastebuffer
 using pbcopy and pbpaste utilities by providing convienient commands for
 yanking into mac os x pastebuffer and pasting from it
-Last Change: 1 August, 2012
+Last Change: 2 September, 2012
 License: Vim License (see :help license)
 Website: https://github.com/troydm/pb.vim
 
@@ -21,15 +21,16 @@ Help on using pb.vim                                                    *pb.vim*
 This is a simple vim plugin for interacting with Mac OS X pastebuffer
 using pbcopy and pbpaste utilities. It provides two commands for yanking text
 into pastebuffer and pasting text from Mac OS X pastebuffer
-Pbyank and Pbpaste that operate on {range} and can take {register} as first argument 
+Pbyank and Pbpaste that operate on {range} and can take {register} as first 
+argument. They also support text selected in |visual-mode| area
 
 ==============================================================================
  2. CONFIGURATION                                         *pb.vim-configuration*
 
                                                          *g:pb_command_prefix*
 g:pb_command_prefix     (Default: '')
-    You can define optional global option for prepanding to pbpaste and pbcopy command
-    For example if you want to use Mac OS X pastebuffer on remote host
+    You can define optional global option for prepanding to pbpaste and pbcopy 
+    command. For example if you want to use Mac OS X pastebuffer on remote host
     let g:pb_command_prefix = 'ssh remotehost '
 
 ==============================================================================
@@ -39,13 +40,22 @@ g:pb_command_prefix     (Default: '')
 :[range]Pbyank [x]
     To yank text into Mac OS X pastebuffer from {range}
     If {range} is empty current line is used
+    If in |visual-mode| yanks only currently selected text in |visual-mode| area 
     If register name is provided yanks text from register instead of range
 
                                                           *Pbpaste*
 :[range]Pbpaste [x]
     To paste text from Mac OS X pastebuffer replacing {range}
-    Replaced {range} is copied into current register
-    If no {range} is specified it pastes text at current cursor position 
-    If register name is provided pastes text into register instead of current buffer
+    Replaced {range} is copied into "" register or [x] register name
+    If |visual-mode| area is selected instead of {range} it replaces selected
+    |visual-mode| area text with a text from Mac OS X buffer and yanks previously
+    selected text into "" register or [x] register name 
+    If no {range} is specified and no |visual-mode| area is selected it pastes 
+    text at current cursor position. If only [x] register name is provided 
+    it pastes text into register instead of current buffer
+
+                                                          *PbPaste*
+:[range]PbPaste [x]
+    Same as |Pbpaste| but works just like |P|
 
  vim:tw=78:ts=8:ft=help:norl:
