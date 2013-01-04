@@ -15,12 +15,13 @@ if v:version < 700
   finish
 endif
 
-" Options
+" options {{{1
 if !exists("g:pb_command_prefix")
   let g:pb_command_prefix = ''  
 endif
 
-" Utility function to get current buffer line ending symbols
+" utility function {{{1
+" to get current buffer line ending symbols 
 function! s:GetCurrentLineEnding()
   if &ff == 'unix'
     return "\n"
@@ -31,7 +32,7 @@ function! s:GetCurrentLineEnding()
   return "\r\n"
 endfunction
 
-command! -register -range Pbyank call <SID>PbyankText(<line1>,<line2>,'<reg>')
+" yank text function {{{1
 function! s:PbyankText(l1,l2,r)
   if a:r == ''
     if getpos("'<") == getpos('.')
@@ -48,8 +49,7 @@ function! s:PbyankText(l1,l2,r)
   call system(g:pb_command_prefix . 'pbcopy', text)
 endfunction
 
-command! -register -range Pbpaste call <SID>PbpasteText('p',<line1>,<line2>,'<reg>')
-command! -register -range PbPaste call <SID>PbpasteText('P',<line1>,<line2>,'<reg>')
+" paste text function {{{1
 function! s:PbpasteText(p,l1,l2,r)
   let text = system(g:pb_command_prefix . 'pbpaste')
   if getpos("'<") == getpos('.')
@@ -83,5 +83,10 @@ function! s:PbpasteText(p,l1,l2,r)
     endif
   endif
 endfunction
+
+" commands {{{1
+command! -register -range Pbyank call <SID>PbyankText(<line1>,<line2>,'<reg>')
+command! -register -range Pbpaste call <SID>PbpasteText('p',<line1>,<line2>,'<reg>')
+command! -register -range PbPaste call <SID>PbpasteText('P',<line1>,<line2>,'<reg>')
 
 " vim: set sw=2 sts=2 et fdm=marker:
